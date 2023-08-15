@@ -8,7 +8,7 @@ The ant can score points by eating food, or attacking other ants. If an ant is a
 
 The ant who attacks first will win.
 
-![ants](https://github.com/zknill/adversarial-ants/blob/main/ants.jpg?raw=true)
+![ants](https://raw.githubusercontent.com/zknill/adversarial-ants/main/ants.png)
 
 ## Server
 
@@ -21,6 +21,7 @@ ooooo
 ofooo
 ooxoo
 fooox
+ooooo
 ```
 
 The current ant client is always in the middle of the strings (marked here by an x). 

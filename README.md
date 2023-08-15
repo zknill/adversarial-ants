@@ -10,7 +10,7 @@ The ant who attacks first will win.
 
 ![ants](https://raw.githubusercontent.com/zknill/adversarial-ants/main/ants.png)
 
-## Server
+## Server [typescript]
 
 The server operates on ticks, it ticks once per second. On each tick it will process one command from each client, and return the state of the client back to that client.
 
@@ -37,7 +37,7 @@ Symbol | meaning
 `e` | the current ant facing east
 `w` | the current ant facing west
 
-## Client
+## Client [go]
 
 Each client connects to the server by sending a message on the `game:manager` channel. 
 The server and client then switch over to channels specific for that client: 

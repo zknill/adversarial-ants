@@ -24,14 +24,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Ably = __importStar(require("ably"));
-const game_1 = require("./src/game");
+const game_player_1 = require("./src/game_player");
 const key = process.env.ABLY_KEY || 'missing';
 let client = new Ably.Realtime.Promise(key);
 let gameManagerChannel = client.channels.get("game:manager");
 gameManagerChannel
     .subscribe("join", (message) => {
     console.log("new player entered the game: ", message.clientId);
-    (0, game_1.handlePlayerJoin)(message.clientId, client);
+    (0, game_player_1.handlePlayerJoin)(message.clientId, client);
 })
     .then((state) => {
     console.log("subscribe state: ", state);

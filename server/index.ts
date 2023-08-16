@@ -1,6 +1,5 @@
 import * as Ably from 'ably'
-import {handlePlayerJoin} from './src/game'
-
+import {handlePlayerJoin} from './src/game_player'
 
 const key = process.env.ABLY_KEY || 'missing'
 let client = new Ably.Realtime.Promise(key)

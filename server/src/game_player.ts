@@ -23,11 +23,21 @@ function handlePlayerJoin(id: string, client: Ably.Types.RealtimePromise) {
     gameState.players.set(id, p)
     p.sendState()
 
+    // players can take an action every 1 second
     setInterval(() => processPlayerAction(gameState, id), 1000)
 
     client.channels
         .get("player:" + id + ":commands")
         .subscribe("command", (message) => {
+            // Commands are buffered, so commands can be issued faster
+            // than one per second, but will only be processed 1 per 
+            // second. Given the state of the map changes around the 
+            // ant, it's likely not an optimial strategy to issue 
+            // commands much faster than they can be processed. But it 
+            // may make sense to buffer multiple commands. For example; 
+            // a MOV and ATK could be buffered in the hope that this 
+            // and will trigger our ant  to make the first ATK  and win 
+            // the fight.
             bufferCommand(gameState, message.clientId, message.data as string)
         })
         .catch((err) => console.error(err))
